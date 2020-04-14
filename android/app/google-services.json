@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "643700807347",
+    "firebase_url": "https://chat-3d1ac.firebaseio.com",
+    "project_id": "chat-3d1ac",
+    "storage_bucket": "chat-3d1ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643700807347:android:0041bf67b22307b996c2c6",
+        "android_client_info": {
+          "package_name": "com.example.chatroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643700807347-calu9grdlocsi8dj45nogs4a39cobmvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbp2UTftsR7sreR0OaiscduJI72w_rvUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643700807347-calu9grdlocsi8dj45nogs4a39cobmvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
