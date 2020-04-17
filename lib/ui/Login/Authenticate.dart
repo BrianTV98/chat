@@ -1,3 +1,4 @@
+import 'package:chatroom/ui/Register/Register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,14 +34,28 @@ class AuthenticateState extends State<Authenticate> {
             TextInputPassowrd(),
             Center(
               child: Text(
-                (auth == 1) ? "Tên đăng nhập hoặc mật khẩu sai" : "  ",
-                style: TextStyle(
-                    color: Colors.red
-                ),
+                (auth == 1) ? "Tên đăng nhập hoặc mật khẩu sai" : "",
+                style: TextStyle(color: Colors.red),
               ),
             ),
-            SizedBox(height: 5,),
-            LoginButton("Login", Colors.white, Colors.blueAccent),
+            SizedBox(
+              height: 5,
+            ),
+            LoginButton("ui.Login", Colors.white, Colors.blueAccent),
+            SizedBox(
+              height: 15,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Register()));
+              },
+              child: Text(
+                "Create one account",
+                style: TextStyle(color: Colors.blueAccent, fontSize: 16),
+              ),
+            )
           ],
         ),
       ),
@@ -56,12 +71,10 @@ class AuthenticateState extends State<Authenticate> {
       child: TextField(
         controller: widget.userNameControler,
         keyboardType: TextInputType.emailAddress,
-        decoration:
-        InputDecoration(
+        decoration: InputDecoration(
             labelText: "Email",
             border: OutlineInputBorder(),
-            errorText: isEmail ? null : "Email không hợp lệ"
-        ),
+            errorText: isEmail ? null : "Email không hợp lệ"),
       ),
     );
   }
@@ -75,14 +88,11 @@ class AuthenticateState extends State<Authenticate> {
       child: TextField(
         obscureText: true,
         controller: widget.passWordControler,
-        decoration:
-        InputDecoration(
+        decoration: InputDecoration(
             labelText: "Password",
             border: OutlineInputBorder(),
-            errorText: (!validPassword)
-                ? "Password không được để trống"
-                : null
-        ),
+            errorText:
+            (!validPassword) ? "Password không được để trống" : null),
       ),
     );
   }
@@ -112,8 +122,7 @@ class AuthenticateState extends State<Authenticate> {
       setState(() {
         validPassword = false;
       });
-    }
-    else
+    } else
       setState(() {
         validPassword = true;
       });
@@ -122,14 +131,13 @@ class AuthenticateState extends State<Authenticate> {
       setState(() {
         isEmail = true;
       });
-    }
-    else
+    } else
       setState(() {
         isEmail = false;
       });
 
     if (widget.passWordControler.text.isNotEmpty &&
-        !validateEmail(widget.userNameControler.text.trim())) {
+        validateEmail(widget.userNameControler.text.trim())) {
       _signInWithEmailAndPassword();
     }
   }
@@ -153,26 +161,15 @@ class AuthenticateState extends State<Authenticate> {
           .signInWithEmailAndPassword(
           email: widget.userNameControler.text.trim(),
           password: widget.passWordControler.text.trim());
-      setState(() {
-        auth=0;
-      });
       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     } catch (e) {
       print(e.toString());
       setState(() {
-        auth=1;
+        auth = 1;
       });
     }
   }
 
-  void _showToast(BuildContext context) {
-    final scaffold = Scaffold.of(context);
-    scaffold.showSnackBar(
-      SnackBar(
-        content: const Text('Ok'),
-      ),
-    );
-  }
 }
 
 class Home extends StatelessWidget {

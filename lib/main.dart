@@ -1,5 +1,7 @@
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
-import 'package:chatroom/Login/Authenticate.dart';
+import 'package:chatroom/ui/Home/HomeScreen.dart';
+import 'package:chatroom/ui/Login/Authenticate.dart';
+import 'package:chatroom/ui/Register/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'Call.dart';
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Authenticate(),
+      home: HomeScreen(),
     );
   }
 }
@@ -103,4 +105,5 @@ class LoginState extends State<Login> {
                   )));
     }
   }
+
 }
